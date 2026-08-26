@@ -9,6 +9,7 @@ function App() {
 
   return (
     <>
+    <p class="text-red-500 text-xl">Hello world</p>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
