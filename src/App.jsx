@@ -9,8 +9,8 @@ function App() {
 
   return (
     <>
-      {page == "hjem" && <Hjem />}
       {page == "login" && <Login />}
+      {page == "hjem" && <Hjem />}
       {page == "note" && <Note />}
     </>
   );
