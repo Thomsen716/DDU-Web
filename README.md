@@ -30,12 +30,18 @@ Følg disse trin for at køre projektet lokalt på din maskine.
 
 ```bash
 git clone [https://github.com/Thomsen716/DDU-Web.git](https://github.com/Thomsen716/DDU-Web.git)
+```
 
+```bash
 cd DDU-Web
+```
 
+```bash
 npm install
+```
 
+```bash
 npm run dev
+```
 
 Når serveren kører, kan du åbne http://localhost:5173 (eller den port, terminalen anviser) i din browser.
-```
