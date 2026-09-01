@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { RouteContext } from "./Router";
-import Hjem from "./components/Hjem";
-import Note from "./components/Note";
-import Login from "./components/Login";
+import Hjem from "./pages/Hjem";
+import Note from "./pages/Note";
+import Login from "./pages/Login";
 
 function App() {
   const { page, setPage } = useContext(RouteContext);
