@@ -5,6 +5,8 @@ import CreateNotebookModal from "../components/CreateNotebookModal";
 import BookIcon from "../assets/book.svg";
 import OnevvordHero from "../assets/oneword_hero.svg";
 
+import Button from "../components/Button";
+
 export default function Hjem() {
   // Tilstand for notebøger
   const [notebooks, setNotebooks] = useState([
@@ -65,11 +67,12 @@ export default function Hjem() {
             Mine Notebøger:
           </h2>
 
-          <div className="space-y-3 max-w-5xl">
+          <div className="space-y-3 max-w-5xl w-full">
             {notebooks.map((notebook) => (
-              <div
+              <Button
+                pageToSet={"note"}
                 key={notebook.id}
-                className="bg-[#e2e2e2]/60 hover:bg-[#dcdcdc] transition p-3.5 px-5 rounded-2xl flex items-center justify-between cursor-pointer group"
+                className="w-full bg-[#e2e2e2]/60 hover:bg-[#dcdcdc] transition p-3.5 px-5 rounded-2xl flex items-center justify-between cursor-pointer group"
               >
                 <div className="flex items-center space-x-3">
                   <span className="text-xs text-gray-500 font-mono">
@@ -86,7 +89,7 @@ export default function Hjem() {
                 <span className="text-xs text-gray-400 font-normal">
                   sidst ændrede: {notebook.lastModified}
                 </span>
-              </div>
+              </Button>
             ))}
           </div>
         </section>
