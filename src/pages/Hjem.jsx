@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // Importering af de to nye komponenter
 import Sidebar from "../components/Sidebar";
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import BookIcon from "../assets/book.svg";
+import OnevvordHero from "../assets/oneword_hero.svg";
 
 export default function Hjem() {
   // Tilstand for notebøger
@@ -55,11 +56,7 @@ export default function Hjem() {
           </div>
 
           <div className="hidden md:block">
-            <div className="w-36 h-24 bg-rose-100/60 rounded-3xl p-3 flex items-center justify-center border border-rose-200/50 shadow-inner">
-              <div className="w-12 h-12 bg-[#e77979] rounded-2xl shadow-lg transform -rotate-6 flex items-center justify-center text-white font-bold">
-                W
-              </div>
-            </div>
+            <img src={OnevvordHero} alt="OnevvordHero" className="w100 h-40" />
           </div>
         </header>
 
