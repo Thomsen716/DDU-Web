@@ -11,7 +11,7 @@ export default function CreateNotebookModal({ isOpen, onClose, onCreate }) {
     e.preventDefault();
     if (!newTitle.trim()) return;
 
-    // Sender den nye titel tilbage til forældre-komponentet (Dashboard)
+    // Sender den nye titel tilbage til forældre-komponentet (Hjem)
     onCreate(newTitle.trim());
     setNewTitle("");
     onClose();

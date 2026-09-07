@@ -4,6 +4,7 @@ import BookIcon from "../assets/Book.svg";
 import ChatIcon from "../assets/Chat_bot.svg";
 import GearIcon from "../assets/Gear.svg";
 import UserIcon from "../assets/User.svg";
+import OnevvordLogo from "../assets/onevvord.svg";
 
 // Seperat komponent til venstre sidebjælke
 export default function Sidebar() {
@@ -12,8 +13,12 @@ export default function Sidebar() {
       {/* Top navigation */}
       <div className="flex flex-col items-center space-y-6">
         {/* Logo */}
-        <div className="w-8 h-8 bg-rose-400 text-white rounded-md flex items-center justify-center font-bold text-xs shadow-sm">
-          W
+        <div className="w-8 h-8 rounded-md flex items-center justify-center shadow-sm">
+          <img
+            src={OnevvordLogo}
+            alt="Onevvord"
+            className="w-8 h-8 object-contain"
+          />
         </div>
 
         {/* Navigationsknapper med pladsholder-ikoner */}
