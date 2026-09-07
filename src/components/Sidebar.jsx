@@ -6,6 +6,8 @@ import GearIcon from "../assets/Gear.svg";
 import UserIcon from "../assets/User.svg";
 import OnevvordLogo from "../assets/onevvord.svg";
 
+import Button from "./Button";
+
 // Seperat komponent til venstre sidebjælke
 export default function Sidebar() {
   return (
@@ -13,13 +15,16 @@ export default function Sidebar() {
       {/* Top navigation */}
       <div className="flex flex-col items-center space-y-6">
         {/* Logo */}
-        <div className="w-8 h-8 rounded-md flex items-center justify-center shadow-sm">
+        <Button
+          pageToSet={"hjem"}
+          className="w-8 h-8 rounded-md flex items-center justify-center shadow-sm"
+        >
           <img
             src={OnevvordLogo}
             alt="Onevvord"
             className="w-8 h-8 object-contain"
           />
-        </div>
+        </Button>
 
         {/* Navigationsknapper med pladsholder-ikoner */}
         <button
