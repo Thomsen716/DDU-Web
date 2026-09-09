@@ -3,7 +3,6 @@ const RouteContext = createContext(null);
 
 export default function Router({ children }) {
   const currentPage = window.location.pathname.split("/")[1];
-  console.log(currentPage);
   const [page, setPage] = useState(currentPage || "login");
 
   const setPageURL = (value) => {
