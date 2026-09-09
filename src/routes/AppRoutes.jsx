@@ -8,12 +8,15 @@ import Login from "../pages/auth/Login";
 
 import AuthLayout from "../Layout/AuthLayout";
 // import WelcomeLayout  from "../Layout/Welcomelayout";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
         <Route element={<AuthLayout />}>
           <Route path="/" element={<Welcome />} />
           <Route path="/signup" element={<Signup />} />

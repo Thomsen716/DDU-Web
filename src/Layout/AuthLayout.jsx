@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import CopyrightFooter from "../components/CopyrightFooter";
-import NavBar from "../components/NavBar";
+import AuthNavBar from "../components/AuthNavBar";
 
 export default function AuthLayout() {
   return (
     <div className="">
-      <NavBar />
+      <AuthNavBar />
       <main className="">
         <Outlet />
       </main>

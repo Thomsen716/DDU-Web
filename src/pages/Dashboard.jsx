@@ -11,7 +11,7 @@ export default function Dashboard() {
         <header className="relative bg-[#ebe8e8] pt-10 pb-20 px-12 flex justify-between items-start">
           <div className="space-y-6">
             <h1 className="text-3xl font-extrabold tracking-wider text-[#ea7c7c] uppercase">
-              Velkommen to Onevvord
+              Velkommen to OneWord
             </h1>
             <button className="bg-[#e77979] hover:bg-[#d66868] text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition transform active:scale-95 flex items-center gap-2">
               <span>Opret Notesbog</span>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
   return (
     <div className="flex-col justify-center items-center h-screen w-screen flex bg-[#f3f3f3]">
       <h1 className="font-bold text-2xl p-10"> 404 - Siden ikke fundet ❌</h1>
@@ -11,6 +11,4 @@ const NotFoundPage = () => {
       </Link>
     </div>
   );
-};
-
-export default NotFoundPage;
+}
