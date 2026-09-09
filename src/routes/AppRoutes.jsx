@@ -7,14 +7,15 @@ import Signup from "../pages/auth/SignUp";
 import Login from "../pages/auth/Login";
 
 import AuthLayout from "../Layout/AuthLayout";
+// import WelcomeLayout  from "../Layout/Welcomelayout";
 
 function AppRoutes() {
   return (
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route element={<AuthLayout />}>
+          <Route path="/" element={<Welcome />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Route>
