@@ -1,5 +1,3 @@
-import React from "react";
-
 import BookIcon from "../assets/Book.svg";
 import ChatIcon from "../assets/Chat_bot.svg";
 import GearIcon from "../assets/Gear.svg";

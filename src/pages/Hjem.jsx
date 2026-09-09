@@ -1,6 +1,5 @@
 import { useState } from "react";
-// Importering af de to nye komponenter
-import Sidebar from "../components/Sidebar";
+
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import BookIcon from "../assets/book.svg";
 import OnevvordHero from "../assets/oneword_hero.svg";
@@ -39,9 +38,6 @@ export default function Hjem() {
 
   return (
     <div className="flex h-screen bg-[#f3f3f3] font-sans text-gray-800 relative">
-      {/* Sidebjælke importeret her */}
-      <Sidebar />
-
       {/* Hovedindhold */}
       <main className="flex-1 flex flex-col overflow-y-auto">
         <header className="relative bg-[#ebe8e8] pt-10 pb-20 px-12 flex justify-between items-start">
