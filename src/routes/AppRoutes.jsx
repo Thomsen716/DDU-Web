@@ -6,14 +6,18 @@ import NotFoundPage from "../pages/NotFoundPage";
 import Signup from "../pages/auth/SignUp";
 import Login from "../pages/auth/Login";
 
+import AuthLayout from "../Layout/AuthLayout";
+
 function AppRoutes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<AuthLayout />}>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

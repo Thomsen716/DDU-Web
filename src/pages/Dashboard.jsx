@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import BookIcon from "../assets/book.svg";
 import OnevvordHero from "../assets/oneword_hero.svg";
 
@@ -27,7 +29,7 @@ export default function Dashboard() {
           </h2>
 
           <div className="space-y-3  w-full">
-            <button
+            <Link
               title="Notebog 1"
               className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-4 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition w-full flex items-center justify-between"
             >
@@ -44,7 +46,7 @@ export default function Dashboard() {
               <span className="text-xs text-gray-400 font-normal">
                 sidst ændrede:
               </span>
-            </button>
+            </Link>
           </div>
         </section>
       </main>
