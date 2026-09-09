@@ -4,10 +4,12 @@ import Sidebar from "./Sidebar";
 export default function Layout() {
   return (
     <>
-      <Sidebar></Sidebar>
-      {/* Dynamisk indhold (Her bliver Home, About osv. vist) */}
-
-      <Outlet />
+      <div className="flex h-screen">
+        <Sidebar />
+        <div className="flex-1">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }
