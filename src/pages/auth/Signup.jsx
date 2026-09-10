@@ -119,12 +119,17 @@ export default function Signup() {
             />
           </div>
 
+<<<<<<< HEAD
           <button
+=======
+          <Link
+            to="/dashboard"
+>>>>>>> parent of af3fbfa (Implement authentication context and guard; add AuthProvider and AuthGuard components, update routing in AppRoutes, and modify Signup button behavior.)
             type="submit"
             className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
           >
             Opret Konto
-          </button>
+          </Link>
         </form>
 
         <p className="mt-4 text-center text-sm text-[#6b6b6b]">
