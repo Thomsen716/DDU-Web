@@ -1,38 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../Auth";
+import { UserAuth } from "../../context/AuthContext";
+
 import welcomeBagground from "../../assets/welcome-bagground.png";
 import wordOnenote from "../../assets/word-onenote.png";
 
-export default function Signup() {
-  const { signUpSupabase } = useAuth();
-  const [name, setName] = useState("");
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState("");
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    if (!email || password.length < 6 || password !== confirmPassword) {
-      alert(
-        "Tjek venligst dine oplysninger. Adgangskoder skal matche og være mindst 6 tegn lange, og email skal være udfyldt.",
-      );
-      return;
-    }
-
-    const { error } = await signUpSupabase(email, password, name, "");
-
-    if (error) {
-      alert(error.message);
-      return;
-    }
-
-    setName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-  }
+  const { session, signUpNewUser } = UserAuth();
+  console.log(session);
 
   return (
     <div className="relative flex min-h-screen items-center justify-center font-sans">
@@ -119,17 +99,12 @@ export default function Signup() {
             />
           </div>
 
-<<<<<<< HEAD
           <button
-=======
-          <Link
-            to="/dashboard"
->>>>>>> parent of af3fbfa (Implement authentication context and guard; add AuthProvider and AuthGuard components, update routing in AppRoutes, and modify Signup button behavior.)
             type="submit"
             className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
           >
             Opret Konto
-          </Link>
+          </button>
         </form>
 
         <p className="mt-4 text-center text-sm text-[#6b6b6b]">
@@ -144,4 +119,4 @@ export default function Signup() {
       </div>
     </div>
   );
-}
+};

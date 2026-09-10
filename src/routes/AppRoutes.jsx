@@ -12,6 +12,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 
 import AuthGuard from "../AuthGuard";
 import { AuthProvider } from "../Auth";
+import { AuthContextProvider } from "../context/AuthContext";
 
 function AppRoutes() {
   return (
@@ -40,4 +41,5 @@ function AppRoutes() {
   );
 }
 
+<AuthProviderContext></AuthProviderContext>;
 export default AppRoutes;
