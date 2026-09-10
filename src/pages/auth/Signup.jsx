@@ -1,8 +1,39 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Auth";
 import welcomeBagground from "../../assets/welcome-bagground.png";
 import wordOnenote from "../../assets/word-onenote.png";
 
 export default function Signup() {
+  const { signUpSupabase } = useAuth();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (!email || password.length < 6 || password !== confirmPassword) {
+      alert(
+        "Tjek venligst dine oplysninger. Adgangskoder skal matche og være mindst 6 tegn lange, og email skal være udfyldt.",
+      );
+      return;
+    }
+
+    const { error } = await signUpSupabase(email, password, name, "");
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  }
+
   return (
     <div className="relative flex min-h-screen items-center justify-center font-sans">
       <img
@@ -21,7 +52,7 @@ export default function Signup() {
           Opret Konto
         </h1>
 
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="navn"
@@ -33,6 +64,8 @@ export default function Signup() {
               id="navn"
               type="text"
               placeholder="John Doe"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#EA9393] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
             />
           </div>
@@ -47,6 +80,8 @@ export default function Signup() {
               id="email"
               type="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#EA9393] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
             />
           </div>
@@ -62,6 +97,8 @@ export default function Signup() {
               id="password"
               type="password"
               placeholder="Skriv din adgangskode"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#EA9393] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
             />
           </div>
@@ -76,15 +113,13 @@ export default function Signup() {
               id="confirmPassword"
               type="password"
               placeholder="Bekræft din adgangskode"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#EA9393] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
             />
           </div>
 
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              console.log("test");
-            }}
             type="submit"
             className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
           >
