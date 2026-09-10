@@ -80,13 +80,16 @@ export default function Signup() {
             />
           </div>
 
-          <Link
-            to="/dashboard"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              console.log("test");
+            }}
             type="submit"
             className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
           >
             Opret Konto
-          </Link>
+          </button>
         </form>
 
         <p className="mt-4 text-center text-sm text-[#6b6b6b]">

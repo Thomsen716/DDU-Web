@@ -33,7 +33,7 @@ export default function Welcome() {
           </Link>
 
           <Link
-            className="w-46 rounded-3xl bg-[#e8e8e8] text-[#EA9393] border-[#EA9393] border-2 py-3 font-semibold shadow-sm"
+            className="w-46 rounded-3xl bg-white text-[#EA9393] border-[#EA9393] border-2 py-3 font-semibold shadow-sm"
             to="login"
           >
             Login

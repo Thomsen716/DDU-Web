@@ -10,20 +10,32 @@ import AuthLayout from "../Layout/AuthLayout";
 // import WelcomeLayout  from "../Layout/Welcomelayout";
 import DashboardLayout from "../Layout/DashboardLayout";
 
+import AuthGuard from "../AuthGuard";
+import { AuthProvider } from "../Auth";
+
 function AppRoutes() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-        <Route element={<AuthLayout />}>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route element={<DashboardLayout />}>
+            <Route
+              path="/dashboard"
+              element={
+                <AuthGuard>
+                  <Dashboard />
+                </AuthGuard>
+              }
+            />
+          </Route>
+          <Route element={<AuthLayout />}>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
