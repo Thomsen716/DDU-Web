@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import { useAuth } from "./components/Supabase";
+import { useAuth } from "./Auth";
 
 function AuthGuard({ children }) {
   const { user, loading } = useAuth();

@@ -1,14 +1,22 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-import { Session, User } from "@supabase/supabase-js";
-import { supabase, SUPPORTED_PROVIDERS } from "./Supabase";
-import AuthContextType from "./types/AuthContextType";
+import { supabase, SUPPORTED_PROVIDERS } from "./components/supabase";
 
-const AuthContext = (createContext < AuthContextType) | (undefined > undefined);
+const AuthContext = createContext(undefined);
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+
+  return context;
+};
 
 const AuthProvider = ({ children }) => {
-  const [session, setSession] = (useState < Session) | (null > null);
-  const [user, setUser] = (useState < User) | (null > null);
+  const [session, setSession] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
