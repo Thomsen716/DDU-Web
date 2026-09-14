@@ -4,7 +4,7 @@ import { supabase, SUPPORTED_PROVIDERS } from "./components/supabase";
 
 const AuthContext = createContext(undefined);
 
-export const useAuth = () => {
+const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (context === undefined) {
@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const signInSupabase = async (email, password) => {
+    console.log("test");
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -47,6 +48,7 @@ const AuthProvider = ({ children }) => {
       console.error(error);
       return { error };
     }
+    console.log("Vi er klar");
     setSession(data.session);
     setUser(data.user);
     return { data };
@@ -225,4 +227,5 @@ const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider, useAuth };
+export default AuthProvider;
