@@ -20,7 +20,7 @@ create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
 security definer set search_path = public
-as $$
+as $$ 
 begin
   insert into public.users (id, first_name, last_name)
   values (
