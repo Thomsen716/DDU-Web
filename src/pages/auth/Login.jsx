@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import welcomeBagground from "../../assets/welcome-bagground.png";
 import wordOnenote from "../../assets/word-onenote.png";
+import { useAuth } from "../../Auth";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // 2. Hent signInSupabase fra useAuth()
+  const { signInSupabase } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await signInSupabase(email, password);
+    navigate("/dashboard");
+  }
+
   return (
     <div className="relative flex min-h-screen items-center justify-center font-sans">
       <img
@@ -21,7 +35,7 @@ export default function Login() {
           Login
         </h1>
 
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -34,6 +48,10 @@ export default function Login() {
               type="email"
               placeholder="you@example.com"
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#D85F6F] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
 
@@ -49,16 +67,19 @@ export default function Login() {
               type="password"
               placeholder="Skriv din adgangskode"
               className="w-full box-border rounded-xl border border-[#100c08]/20 bg-[#fffdfd] px-3.5 py-3 text-[15px] text-[#2f2f2f] outline-none transition duration-200 placeholder:text-[#a4a4a4] focus:border-[#D85F6F] focus:shadow-[0_0_0_3px_rgba(229,122,122,0.12)]"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
 
-          <Link
-            to="/dashboard"
+          <button
             type="submit"
             className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
           >
             Login
-          </Link>
+          </button>
         </form>
 
         <p className="mt-4 text-center text-sm text-[#6b6b6b]">
