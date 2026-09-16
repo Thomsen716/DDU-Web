@@ -42,12 +42,14 @@ export default function NotebookList() {
               key={notebook.id}
               className="flex w-full items-center justify-between rounded-xl border border-gray-300 bg-white px-4 py-3 text-left shadow-sm transition hover:bg-gray-100"
             >
-              <div className="flex items-center gap-3">
-                <img
-                  src={BookIcon}
-                  alt="Book icon"
-                  className="h-5 w-5 object-contain"
-                />
+              <div className=" flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#e77979] bg-[#e77979]/20">
+                  <img
+                    src={BookIcon}
+                    alt="Book icon"
+                    className="h-5 w-5 object-contain -[#e77979]"
+                  />
+                </div>
 
                 <div>
                   <div className=" font-semibold text-gray-800">
