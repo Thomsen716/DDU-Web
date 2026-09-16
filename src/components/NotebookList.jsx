@@ -34,7 +34,7 @@ export default function NotebookList() {
     <div className="flex-auto bg-[#f9f9f9] -mt-8 rounded-t-[2.5rem] p-10 shadow-lg border-t border-white">
       <h2 className="text-lg font-bold text-gray-900 mb-6">Mine Notebøger</h2>
       {notebooks.length === 0 ? (
-        <p>Ingen notebooks fundet.</p>
+        <p>Opret notesbog for at komme igang</p>
       ) : (
         <div className="space-y-3">
           {notebooks.map((notebook) => (
