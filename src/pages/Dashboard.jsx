@@ -3,6 +3,8 @@ import { useState } from "react";
 import NotebookList from "../components/NotebookList";
 import OnevvordHero from "../assets/oneword_hero.svg";
 
+import CreateNotebookModal from "../components/CreateNotebookModal";
+
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,49 +29,10 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {isOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center ">
-              <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Opret notesbog
-                </h2>
-                <p className="mt-1 text-sm text-gray-500">
-                  Giv din notessbog et navn, og vælg en farve for at holde styr
-                  på dine noter
-                </p>
-                <form /*onSubmit={}*/ className="mt-5">
-                  <label className="mb-2 block text-sm font-medium text-gray-700">
-                    {" "}
-                    Navn
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Fx. Matematik, Dansk eller Projekt"
-                    autoFocus
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-[#E57A7A] focus:ring-1 focus:ring-[#E57A7A]"
-                  />
-
-                  <div className="mt-6 flex justify-center">
-                    <button
-                      onClick={() => {
-                        setIsOpen(false);
-                        console.log("setIsOpen(false) kaldt");
-                      }}
-                      className="rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-100"
-                    >
-                      Annuller
-                    </button>
-                    <button
-                      type="sumbit"
-                      className="rounded-lg bg-[#E57A7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#d96d6d]"
-                    >
-                      Opret
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
+          <CreateNotebookModal
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+          />
 
           <div className="hidden md:block">
             <img src={OnevvordHero} alt="OnevvordHero" className="w100 h-40" />

@@ -137,6 +137,19 @@ const AuthProvider = ({ children }) => {
     }
     return { data };
   };
+  const addNotebook = async (name) => {
+    const { data, error } = await supabase
+      .from("notebook")
+      .insert([{ user_id: user?.id, name }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error(error);
+      return { error };
+    }
+    return { data };
+  };
 
   const addNote = async (title, content) => {
     const { data, error } = await supabase
@@ -239,6 +252,7 @@ const AuthProvider = ({ children }) => {
     deleteNote,
     updateNote,
     listNotebooks,
+    addNotebook,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
