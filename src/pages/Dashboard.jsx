@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import NotebookList from "../components/NotebookList";
 
 import OnevvordHero from "../assets/oneword_hero.svg";

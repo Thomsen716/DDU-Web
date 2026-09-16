@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 import { supabase } from "./supabase";
 
-const SUPPORTED_PROVIDERS = ["github", "google", "azure", "facebook"];
+const SUPPORTED_PROVIDERS = [""];
 
 const AuthContext = createContext(undefined);
 
