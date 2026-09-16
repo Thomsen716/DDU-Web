@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import { supabase, SUPPORTED_PROVIDERS } from "./components/supabase";
+import { supabase } from "./supabase";
+
+const SUPPORTED_PROVIDERS = ["github", "google", "azure", "facebook"];
 
 const AuthContext = createContext(undefined);
 

@@ -1,18 +1,48 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth";
 
 import welcomeBagground from "../../assets/welcome-bagground.png";
 import wordOnenote from "../../assets/word-onenote.png";
 
 const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const { session, signUpNewUser } = UserAuth();
-  console.log(session);
+  const { signUpSupabase } = useAuth();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+
+    if (!name.trim() || !email.trim() || !password || !confirmPassword) {
+      setError("Udfyld alle felter.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Koderne matcher ikke.");
+      return;
+    }
+
+    setLoading(true);
+    const firstName = name.trim().split(" ")[0] || name.trim();
+    const lastName = name.trim().split(" ").slice(1).join(" ") || "";
+    const result = await signUpSupabase(email, password, firstName, lastName);
+    setLoading(false);
+
+    if (result?.error) {
+      setError(result.error.message || "Der opstod en fejl under signup.");
+      return;
+    }
+
+    navigate("/login");
+  };
 
   return (
     <div className="relative flex min-h-screen items-center justify-center font-sans">
@@ -31,6 +61,12 @@ const Signup = () => {
         <h1 className="mb-6 text-center text-3xl font-bold text-[#2f2f2f]">
           Opret Konto
         </h1>
+
+        {error && (
+          <p className="mb-4 rounded-md bg-red-50 p-2 text-sm text-red-600">
+            {error}
+          </p>
+        )}
 
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div>
@@ -84,7 +120,7 @@ const Signup = () => {
           </div>
           <div>
             <label
-              htmlFor="password"
+              htmlFor="confirmPassword"
               className="mb-1.5 block text-sm font-semibold text-[#4a4a4a]"
             >
               Bekræft Adgangskode
@@ -101,9 +137,10 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center"
+            disabled={loading}
+            className="bg-[#EA9393] hover:bg-[#e45f5f] text-white font-semibold py-3.5 px-3 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition text-center disabled:opacity-60"
           >
-            Opret Konto
+            {loading ? "Opretter..." : "Opret Konto"}
           </button>
         </form>
 
@@ -120,3 +157,5 @@ const Signup = () => {
     </div>
   );
 };
+
+export default Signup;

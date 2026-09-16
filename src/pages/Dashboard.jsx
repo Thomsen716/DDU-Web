@@ -28,7 +28,6 @@ export default function Dashboard() {
           <h2 className="text-lg font-bold text-gray-900 mb-6">
             Mine Notebøger:
           </h2>
-          <h2>Test en hest</h2>
           <div className="space-y-3  w-full">
             <Link
               title="Notebog 1"

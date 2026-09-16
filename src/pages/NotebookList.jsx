@@ -30,7 +30,7 @@ export default function NotebookList() {
 
   return (
     <div>
-      <h2>Dine Notebooks</h2>
+      <h2 className="text-lg font-bold text-gray-900 mb-6">Mine Notebøger</h2>
       {notebooks.length === 0 ? (
         <p>Ingen notebooks fundet.</p>
       ) : (
