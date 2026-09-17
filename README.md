@@ -21,7 +21,7 @@ Hej -->
 
 Et webprojekt bygget med **Vite**, **React**, **Tailwind** og **Supabase** som database backend.
 
-## 📋 Forudsætninger (Prerequisites)
+## 📋 Forudsætninger 
 
 Før du går i gang, skal du have følgende installeret/oprettet:
 
@@ -54,7 +54,7 @@ Opret en `.env` fil i roden af projektet, og tilføj dine Supabase-nøgler:
 
 ```env
 VITE_SUPABASE_URL=din_supabase_project_url
-VITE_SUPABASE_ANON_KEY=din_supabase_anon_key
+VITE_SUPABASE_PUBLISHABLE_KEY=din_supabase_publishable_key
 ```
 
 _(Du finder disse nøgler i dit Supabase Dashboard under **Project Settings** -> **API**)._
