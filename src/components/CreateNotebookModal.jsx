@@ -1,4 +1,17 @@
-﻿export default function CreateNotebookModal({ isOpen, onClose }) {
+﻿import { useAuth } from "../Auth";
+import { useState } from "react";
+
+export default function CreateNotebookModal({ isOpen, onClose }) {
+  const { user, addNotebook } = useAuth();
+  const [title, setTitle] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
+  const { addedNotebook, setAddedNotebook } = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChangeInTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -15,11 +28,25 @@
           Giv din notesbog et navn, og vælg en farve for at holde styr på dine
           noter
         </p>
-
+        {modalMessage !== "" && addedNotebook && (
+          <div className="message-box">{modalMessage}</div>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onClose();
+            setIsLoading(true);
+
+            addNotebook(title)
+              .then(() => {
+                console.log("Jubii! Tilføjet notebook");
+                setAddedNotebook(true);
+                setModalMessage("Du har tilføjet en notebog");
+              })
+              .catch((error) => {
+                console.log("Noget gik galt", error);
+                setAddedNotebook(false);
+                setModalMessage("Noget gik galt.");
+              });
           }}
           className="mt-5"
         >
@@ -27,10 +54,13 @@
             Navn
           </label>
           <input
+            name="title"
             type="text"
             placeholder="Fx. Matematik, Dansk eller Projekt"
             autoFocus
             className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-[#E57A7A] focus:ring-1 focus:ring-[#E57A7A]"
+            value={title}
+            onChange={handleChangeInTitle}
           />
 
           <div className="mt-6 flex justify-center gap-3">
@@ -42,8 +72,10 @@
               Annuller
             </button>
             <button
+              name="submit"
               type="submit"
               className="rounded-lg bg-[#E57A7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#d96d6d]"
+              disabled={isLoading}
             >
               Opret
             </button>

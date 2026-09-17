@@ -137,10 +137,10 @@ const AuthProvider = ({ children }) => {
     }
     return { data };
   };
-  const addNotebook = async (name) => {
+  const addNotebook = async (title) => {
     const { data, error } = await supabase
       .from("notebook")
-      .insert([{ user_id: user?.id, name }])
+      .insert([{ user_id: user?.id, title }])
       .select()
       .single();
 
