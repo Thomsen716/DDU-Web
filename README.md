@@ -21,7 +21,7 @@ Hej -->
 
 Et webprojekt bygget med **Vite**, **React**, **Tailwind** og **Supabase** som database backend.
 
-## 📋 Forudsætninger (Prerequisites)
+## 📋 Forudsætninger 
 
 Før du går i gang, skal du have følgende installeret/oprettet:
 
